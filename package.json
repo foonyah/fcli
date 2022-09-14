@@ -1,0 +1,63 @@
+{
+  "name": "fcli",
+  "version": "0.0.0",
+  "description": "foonyah command line interface (CLI) tools",
+  "author": "Synquery Team<support@synquery.com>",
+  "bin": {
+    "fcli": "./bin/run"
+  },
+  "homepage": "https://github.com/foonyah/fcli",
+  "license": "GNU GENERAL PUBLIC LICENSE 3.0",
+  "main": "dist/index.js",
+  "repository": "foonyah/fcli",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^1.13.10",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.0.1"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2",
+    "chai": "^4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "globby": "^11",
+    "mocha": "^9",
+    "oclif": "^3",
+    "shx": "^0.3.3"
+  },
+  "oclif": {
+    "bin": "fcli",
+    "dirname": "fcli",
+    "commands": "./src/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "scripts": {
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "version": "oclif readme && git add README.md",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "trace": "node --trace-warnings ./bin/run"
+  },
+  "engines": {
+    "node": ">=18.7.0"
+  },
+  "bugs": "https://github.com/foonyah/fcli/issues",
+  "keywords": [
+    "oclif"
+  ]
+}
